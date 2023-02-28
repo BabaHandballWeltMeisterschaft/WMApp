@@ -1,7 +1,7 @@
 drop VIEW V_SPIELTAG;
 
 CREATE VIEW V_SPIELTAG as
-select TEAM1.NAME as "Team 1", TEAM2.NAME as "Team 2", SPIEL.TOR_TEAM1 ||":"||SPIEL.TOR_TEAM2 as "Ergebnis" , RUNDE.NAME as "Runde", SCHIRI.VORNAME ||" "|| SCHIRI.NAME as "Schiedsrichter", STADION.NAME as "Stadion Bezeichnung"
+select SPIEL.DATUM, TEAM1.NAME as "Team 1", TEAM2.NAME as "Team 2", SPIEL.TOR_TEAM1 ||":"||SPIEL.TOR_TEAM2 as "Ergebnis" , RUNDE.NAME as "Runde", SCHIRI.VORNAME ||" "|| SCHIRI.NAME as "Schiedsrichter", STADION.NAME as "Stadion Bezeichnung"
 FROM SPIEL
 inner join TEAM AS TEAM1 on (TEAM1.TEAM_ID = SPIEL.TEAM1_ID)
 inner join TEAM AS TEAM2 on (TEAM2.TEAM_ID = SPIEL.TEAM2_ID)
