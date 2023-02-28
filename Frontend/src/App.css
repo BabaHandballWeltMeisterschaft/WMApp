@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.outermain {
+  overflow-x: hidden;
+  background-image: url('Style/wm.jpg');
+  background-size: cover;
+  height: 97vh;
+}
+
+.footer {
+  height: 3em;
+  position: static;
+}
+
+.gradient {
+
+  /* can be treated like a fallback */
+  background-color: green;
+
+  /* will be "on top", if browser supports it */
+  background-image: linear-gradient(to right,green, blue);
+
+  /* these will reset other properties, like background-position, but it does know what you mean */
+  background: green;
+  background: linear-gradient(to right,green, blue);
+
+}
