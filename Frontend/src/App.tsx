@@ -14,7 +14,6 @@ import SpielDetail from './Domain/Spiel/SpielDetail';
 import TeamListe from './Domain/Team/TeamListe';
 import TeamDetail from './Domain/Team/TeamDetail';
 import GruppenView from './Domain/Gruppe/GruppenView';
-import SpielerView from './Domain/Spieler/SpielerView';
 
 function App() {
   const queryClient = new QueryClient();
@@ -29,7 +28,6 @@ function App() {
             <Route path='/Teams' element={<TeamListe />} />
             <Route path='/Teams/:id' element={<TeamDetail />} />
             <Route path='/Gruppen' element={<GruppenView />} />
-            <Route path='/Spieler' element={<SpielerView />} />
           </Routes>
         </QueryClientProvider>
       </Layout>
