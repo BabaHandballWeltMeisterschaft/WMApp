@@ -49,4 +49,4 @@ VALUES
 (8,4,'Dänemark',4),
 (8,4,'Bahrain',2),
 (8,4,'Belgien',0),
-(8,4,'Tunesien',0);
+(8,0,'Tunesien',0);
