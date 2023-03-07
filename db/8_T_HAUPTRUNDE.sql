@@ -1,5 +1,5 @@
 
-drop trigger T_HAUPT_PUNKTE;
+/*drop trigger T_HAUPT_PUNKTE;*/
 
 CREATE TRIGGER T_HAUPT_PUNKTE AFTER Insert ON SPIEL
 for each row
@@ -15,7 +15,7 @@ begin
 					 
 			UPDATE TEAM
 				SET HAUPT_PUNKTE = HAUPT_PUNKTE +(SELECT SUM(punkte) FROM TMP WHERE team_id = TEAM.TEAM_ID)
-				WHERE EXISTS (SELECT 1 FROM TMP WHERE team_id = TEAM.TEAM_ID and runde_id >= 4);
+				WHERE EXISTS (SELECT 1 FROM TMP WHERE team_id = TEAM.TEAM_ID and runde_id >= 4 and runde_id <=6);
 				
 			DELETE FROM TMP;
 
