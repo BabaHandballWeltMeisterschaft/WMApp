@@ -1,4 +1,4 @@
-package Models;
+package com.babawmproject.Models;
 
 public class Spieler {
 

@@ -1,5 +1,6 @@
-package Logic;
+package com.babawmproject.DbConnection;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,25 +9,20 @@ import java.sql.ResultSetMetaData;
 public class DbConnector {
 
 	private java.sql.Connection conn = null;
-	private String connectionUrl = "";
+	private final String connectionUrl = "jdbc:sqlite:C:\\Users\\koester\\OneDrive - busitec GmbH\\Berufsschule\\_STDM_Projekt\\WMApp\\db\\WM.db";
 
-	public DbConnector(String connectionUrl) {
-		this.connectionUrl = connectionUrl;
-	}
-
-	public void setConnectionUrl(String connectionUrl) {
-		this.connectionUrl = connectionUrl;
+	public DbConnector() {
 	}
 
 	private void establishConnection() {
 		System.out.println("Verbindung wird hergestellt...");
 		try {
-			conn = DriverManager.getConnection(connectionUrl);
-
+			Class.forName("org.sqlite.JDBC");
+			this.conn = DriverManager.getConnection(connectionUrl);
 			if (conn != null) {
 				System.out.println("Verbindung hergestellt!");
 			} else {
-				System.out.println("Die Verbindung zu " + connectionUrl + " konnte nicht hergestellt werden.");
+				System.out.println("Die Verbindung konnte nicht hergestellt werden...");
 			}
 		} catch (Exception e) {
 			System.out.println("Beim Herstellen der Verbindung ist ein Fehler aufgetreten.");
@@ -41,7 +37,7 @@ public class DbConnector {
 			return null;
 		}
 
-		return executeQuery(query);
+		return this.executeQuery(query);
 	}
 
 	public ResultSet executePOST(String query) {
@@ -55,7 +51,7 @@ public class DbConnector {
 
 	public ResultSet executePUT(String query) {
 		if (!query.toLowerCase().contains("update")) {
-			System.out.println("Die SQL Abfrage muss eine INSERT INTO-Abfrage sein!");
+			System.out.println("Die SQL Abfrage muss eine UPDATE-Abfrage sein!");
 			return null;
 		}
 
@@ -64,7 +60,7 @@ public class DbConnector {
 
 	public ResultSet executeDELETE(String query) {
 		if (!query.toLowerCase().contains("delete from")) {
-			System.out.println("Die SQL Abfrage muss eine INSERT INTO-Abfrage sein!");
+			System.out.println("Die SQL Abfrage muss eine DELETE-Abfrage sein!");
 			return null;
 		}
 
@@ -76,52 +72,37 @@ public class DbConnector {
 
 		try {
 			establishConnection();
-			if (conn != null) {
+			if (this.conn != null) {
+				System.out.println("Execute query: " + query);
 				PreparedStatement prepStat = conn.prepareStatement(query);
 				result = prepStat.executeQuery();
-				System.out.println("Abfrage ausgeführt.");
+				System.out.println("Abfrage ausgefuehrt.");
 			}
 		} catch (Exception e) {
-			System.out.println("Beim Ausführen der Abfrage ist ein Fehler aufgetreten.");
+			System.out.println("Beim Ausfuehren der Abfrage ist ein Fehler aufgetreten.");
 			System.out.println("FEHLER: " + e.getMessage());
 		}
 
 		return result;
 	}
 
-	public void test(ResultSet res) {
-		try {
-
-			ResultSetMetaData resMD = res.getMetaData();
-			int cnt = resMD.getColumnCount();
-			for (int i = 0; i < cnt; i++) {
-				String colName = resMD.getColumnName(i);
-				String mode = resMD.getColumnClassName(i);
-				Object data = getData(res, mode, colName);
-				System.out.println("Key: " + colName + " - Value: " + data);
-			}
-		} catch (Exception e) {
-
-		}
-	}
-
-	private Object getData(ResultSet res, String mode, String key) {
+	public Object getData(ResultSet res, String mode, String key) {
 		Object data = null;
 
 		try {
 
 			switch (mode) {
-			case "String":
-				data = res.getString(key);
-				break;
-			case "Date":
-				data = res.getDate(key);
-				break;
-			case "Long":
-				data = res.getLong(key);
-				break;
-			default:
-				data = res.getInt(key);
+				case "String":
+					data = res.getString(key);
+					break;
+				case "Date":
+					data = res.getDate(key);
+					break;
+				case "Long":
+					data = res.getLong(key);
+					break;
+				default:
+					data = res.getInt(key);
 			}
 
 		} catch (Exception e) {
