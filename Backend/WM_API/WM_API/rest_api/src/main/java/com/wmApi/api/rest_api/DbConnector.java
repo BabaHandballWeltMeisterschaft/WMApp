@@ -1,15 +1,14 @@
-package com.babawmproject.DbConnection;
+package com.wmApi.api.rest_api;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 
 public class DbConnector {
 
 	private java.sql.Connection conn = null;
-	private final String connectionUrl = "jdbc:sqlite:C:\\Users\\koester\\OneDrive - busitec GmbH\\Berufsschule\\_STDM_Projekt\\WMApp\\db\\WM.db";
+	//private final String connectionUrl = "jdbc:sqlite:C:\\Users\\koester\\OneDrive - busitec GmbH\\Berufsschule\\_STDM_Projekt\\WMApp\\db\\WM.db";
+	private final String connectionUrl = "jdbc:sqlite:C:\\Users\\koester\\OneDrive - busitec GmbH\\Desktop\\test.db";
 
 	public DbConnector() {
 	}
@@ -26,7 +25,8 @@ public class DbConnector {
 			}
 		} catch (Exception e) {
 			System.out.println("Beim Herstellen der Verbindung ist ein Fehler aufgetreten.");
-			System.out.println("FEHLER: " + e.getMessage());
+			System.out.println("FEHLER: " + e + ", " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
