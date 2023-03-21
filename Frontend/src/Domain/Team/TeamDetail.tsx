@@ -20,7 +20,7 @@ const TeamDetail: React.FC = () => {
 
     const { data } = useGetTeam(teamId);
 
-    console.log(data?.spieler[0].vorname);
+    // console.log(data?.spieler[0].vorname);
 
     const columns: TableColumn<Spieler>[] = [
         {
@@ -50,9 +50,9 @@ const TeamDetail: React.FC = () => {
                                 <Card.Header as="h5" className="bg-primary text-white">
                                     Spieler
                                 </Card.Header>
-                                <Card.Body>
+                                {/* <Card.Body>
                                     {data && <DataTable columns={columns} data={data?.spieler} />}
-                                </Card.Body>
+                                </Card.Body> */}
                             </Card>
                         </Col>
                         <Col lg={6}>

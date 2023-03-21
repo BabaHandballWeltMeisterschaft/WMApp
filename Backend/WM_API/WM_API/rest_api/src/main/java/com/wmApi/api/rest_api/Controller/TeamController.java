@@ -22,6 +22,7 @@ public class TeamController {
         return new ResponseEntity<>(new Team(res), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     @GetMapping("/teams")
     public ResponseEntity<List<Team>> getAllTeams() {
         ResultSet res = conn.executeGET("SELECT * FROM TEAM");

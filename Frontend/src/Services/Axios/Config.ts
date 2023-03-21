@@ -1,11 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
-const token:string|null=sessionStorage.getItem('bearer');
+import { AxiosRequestConfig } from "axios";
 export const axiosRequestConfiguration: AxiosRequestConfig = {
-    
-    baseURL: 'http://localhost:48157/api/',
-    responseType: 'json',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer `+token
-    }
+  baseURL: "http://localhost:8080/",
+  responseType: "json",
+  headers: {
+    "Content-Type": "application/json",
+  },
 };

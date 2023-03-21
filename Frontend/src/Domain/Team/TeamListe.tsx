@@ -14,12 +14,12 @@ const TeamListe: React.FC = () => {
             name: "Team", selector: (row) => row.name,
         },
         {
-            name: "Punkte", selector: (row) => row.punkte,
+            name: "Punkte", selector: (row) => row.vorrundePunkte,
         },
         {
             cell: (row) => {
                 return (
-                    <Link to={"../Teams/" + row.entityId}><BsThreeDots /></Link>
+                    <Link to={"../Teams/" + row.t_id}><BsThreeDots /></Link>
                 );
             },
             name: "Details"

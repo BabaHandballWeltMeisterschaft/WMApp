@@ -15,7 +15,7 @@ const SpielListe: React.FC = () => {
             cell: (row) => {
                 return (
                     <>
-                        <Link to={"../Teams/" + row.teamEins.entityId}>{row.teamEins.name}</Link>
+                        <Link to={"../Teams/" + row.teamEins.t_id}>{row.teamEins.name}</Link>
                     </>
                 );
             },
@@ -25,7 +25,7 @@ const SpielListe: React.FC = () => {
             cell: (row) => {
                 return (
                     <>
-                        <Link to={"../Teams/" + row.teamZwei.entityId}>{row.teamZwei.name}</Link>
+                        <Link to={"../Teams/" + row.teamZwei.t_id}>{row.teamZwei.name}</Link>
                     </>
                 );
             },

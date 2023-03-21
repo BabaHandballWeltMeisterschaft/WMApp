@@ -8,13 +8,13 @@ const api = AxiosSingletonInstance.getInstance();
 
 export const useGetTeams = (): UseQueryResult<Array<Team>, AxiosError> => {
   const getTeams = async (): Promise<Array<Team>> => {
-    // const response = await api.get("");
-    // return response.data;
+    const response = await api.get("teams");
+    return response.data;
 
-    return [
-      team1,
-      team2,
-    ];
+    // return [
+    //   team1,
+    //   team2,
+    // ];
   };
 
   return useQuery<Array<Team>, AxiosError>({

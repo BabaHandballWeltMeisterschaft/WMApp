@@ -48,16 +48,18 @@ export const spielerListe: Spieler[] = [
   },
 ];
 export const team1: Team = {
-  entityId: "1",
+  t_id: 1,
   name: "Deutschland",
-  punkte: 10,
-  spieler: spielerListe,
+  vorGruppe: 1,
+  vorrundePunkte: 10,
+  //spieler: spielerListe,
 };
 export const team2: Team = {
-  entityId: "2",
+  t_id: 2,
   name: "Frankreich",
-  punkte: 12,
-  spieler: spielerListe,
+  vorGruppe: 1,
+  vorrundePunkte: 12,
+  //spieler: spielerListe,
 };
 
 export const useGetSpiele = (): UseQueryResult<Array<Spiel>, AxiosError> => {

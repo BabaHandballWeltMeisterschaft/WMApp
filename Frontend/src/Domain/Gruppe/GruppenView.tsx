@@ -13,14 +13,14 @@ const GruppenView = () => {
             cell: (row) => {
                 return (
                     <>
-                        <Link to={"../Teams/" + row.entityId}>{row.name}</Link>
+                        <Link to={"../Teams/" + row.t_id}>{row.name}</Link>
                     </>
                 );
             },
             name: "Team", selector: (row) => row.name,
         },
         { name: "Spiele", selector: (row) => row.spiele },
-        { name: "Punkte", selector: (row) => row.punkte },
+        { name: "Punkte", selector: (row) => row.vorrundePunkte },
     ];
 
     return (
